@@ -63,7 +63,8 @@ h6 {
   --main-text-color: rgb(214, 220, 225);
   --board-color: rgb(223, 223, 244);
   --ship-color: rgb(84, 84, 147);
-  --hit-color: rgb(255, 229, 114);
+  --hit-color: rgb(172, 50, 50);
+  --sunk-color: rgb(255, 229, 114);
 }
 
 header {
@@ -98,11 +99,29 @@ cell.hit::before {
   height: 100%;
 }
 
+cell.hit:not(.ship)::before {
+  opacity: 35%;
+  font-weight: lighter;
+}
+
 .ship {
-  background-color: var(--ship-color);
 }
 
 cell.ship.hit {
   color: var(--hit-color);
   font-weight: bold;
+}
+
+cell.ship.hit::before {
+  content: "X";
+  color: var(--hit-color)
+}
+
+cell.ship.sunk {
+  background-color: var(--ship-color);
+  box-shadow: 1px 1px 2px rgb(149, 149, 149);
+}
+
+cell.ship.sunk::before {
+  color: var(--sunk-color)
 }
