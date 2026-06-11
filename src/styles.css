@@ -63,7 +63,7 @@ h6 {
   --main-text-color: rgb(214, 220, 225);
   --board-color: rgb(223, 223, 244);
   --ship-color: rgb(84, 84, 147);
-  --hit-color: red;
+  --hit-color: rgb(255, 229, 114);
 }
 
 header {
@@ -77,10 +77,11 @@ game-wrapper {
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
+  justify-content: center;
+  padding: 42px 0px;
 }
 
 board {
-  /* background-color: var(--board-color); */
   gap: 2px;
 }
 
@@ -89,6 +90,19 @@ cell {
   border-radius: 2px;
 }
 
+cell.hit::before {
+  content: "X";
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
 .ship {
   background-color: var(--ship-color);
+}
+
+cell.ship.hit {
+  color: var(--hit-color);
+  font-weight: bold;
 }
