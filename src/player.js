@@ -1,14 +1,14 @@
-import Gameboard from "./gameboard.js"
+import Gameboard from "./gameboard.js";
 
 class Player {
-    #board
-    constructor() {
-        this.#board = new Gameboard()
-    }
+  #board;
+  constructor() {
+    this.#board = new Gameboard();
+  }
 
-    get board() {
-        return this.#board
-    }
+  get board() {
+    return this.#board;
+  }
 }
 
-export default Player
+export default Player;
