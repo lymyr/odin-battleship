@@ -1,3 +1,4 @@
 import "./styles.css";
+import Render from "./render.js";
 
-console.log("Hello, this is a template");
+Render.render()
