@@ -105,6 +105,7 @@ cell.hit:not(.ship)::before {
 }
 
 .ship {
+  background-color: var(--ship-color); /* temporary for testing */
 }
 
 cell.ship.hit {

@@ -1,8 +1,9 @@
 import Player from "./player.js";
+import Render from "./render.js";
 import Ship from "./ships.js";
 
 // preplaced for now
-const p1 = new Player();
+const p1 = new Player(true);
 const p2 = new Player();
 
 const s1p1 = new Ship(3);
@@ -17,10 +18,9 @@ p2.board.place(s2p2, [9, 5]);
 
 class Game {
     static start() {
-        while (!this.allShipsSunk(p1) || !this.allShipsSunk(p2)) {
-            // p1 turn
+    
             
-        }
+        
     }
 
     static allShipsSunk(player) {
