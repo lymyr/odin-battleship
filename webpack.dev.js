@@ -5,6 +5,6 @@
    mode: 'development',
    devtool: 'inline-source-map',
    devServer: {
-     static: './dist',
+     static: './src/template.html',
    },
  });
