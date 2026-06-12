@@ -16,17 +16,17 @@ class Player {
   }
 
   reset() {
-    this.#board = new Gameboard()
-    this.refillShips()
+    this.#board = new Gameboard();
+    this.refillShips();
   }
 
   refillShips() {
     this.shipsList = [
-        [new Ship(1), new Ship(1), new Ship(1), new Ship(1)],
-        [new Ship(2), new Ship(2), new Ship(2)],
-        [new Ship(3), new Ship(3)],
-        [new Ship(4)]
-    ]
+      [new Ship(1), new Ship(1), new Ship(1), new Ship(1)],
+      [new Ship(2), new Ship(2), new Ship(2)],
+      [new Ship(3), new Ship(3)],
+      [new Ship(4)],
+    ];
   }
 }
 
