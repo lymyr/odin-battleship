@@ -66,8 +66,14 @@ h6 {
   --hit-color: rgb(172, 50, 50);
   --sunk-color: rgb(255, 229, 114);
   --cell-border: 1px solid rgb(154, 147, 180);
-  --cell-radius: 2px;
+  --cell-radius: 12px;
 
+  --player-hit-ship-bg-color: var(--ship-color);
+  --player-hit-ship-color: var(--sunk-color);
+  --player-hit-ship-sunk-bg-color: rgb(29, 29, 100);
+  --player-hit-ship-sunk-color: var(--sunk-color);
+
+  --button-radius: 4px;
 }
 
 header {
@@ -75,6 +81,28 @@ header {
   background-color: var(--main-color);
   color: var(--main-text-color);
   letter-spacing: -2px;
+}
+
+prompt-container {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+prompt-container button {
+  border: none;
+  font-weight: bold;
+  background-color: var(--sunk-color);
+  border-radius: var(--button-radius);
+  padding: 8px 24px;
+  letter-spacing: 2px;
+  box-shadow: 1px 1px 4px black;
+}
+
+prompt-container button:hover {
+  cursor: pointer;
+  opacity: 75%;
 }
 
 game-wrapper {
@@ -85,31 +113,27 @@ game-wrapper {
   padding: 42px 0px;
 }
 
-ship-list {
+player1 {
   display: flex;
-  gap: 8px;
-  justify-content: center;
-}
-
-ship-list > div {
-  width: fit-content;
-  display:flex;
   flex-direction: column;
 }
 
-ship-list p {
-  text-align: center;
-  letter-spacing: -1px;
-}
-
-ship {
-  width: fit-content;
-}
-
-ship > div {
-  border: var(--cell-border);
-  border-radius: var(--cell-radius);
+player1 button {
+  margin-top: 12px;
+  border: none;
+  font-weight: bold;
   background-color: var(--ship-color);
+  color: var(--main-text-color);
+  border-radius: var(--button-radius);
+  padding: 6px 16px;
+  align-self: center;
+  letter-spacing: 2px;
+  font-size: 12px;
+}
+
+player1 button:hover {
+  opacity: 75%;
+  cursor: pointer;
 }
 
 board {
@@ -123,7 +147,7 @@ cell {
 
 cell.hit::before {
   content: "X";
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
@@ -134,8 +158,8 @@ cell.hit:not(.ship)::before {
   font-weight: lighter;
 }
 
-.ship {
-  background-color: var(--ship-color); /* temporary for testing */
+player1 .ship {
+  background-color: var(--ship-color);
 }
 
 cell.ship.hit {
@@ -145,7 +169,7 @@ cell.ship.hit {
 
 cell.ship.hit::before {
   content: "X";
-  color: var(--hit-color)
+  color: var(--hit-color);
 }
 
 cell.ship.sunk {
@@ -154,5 +178,33 @@ cell.ship.sunk {
 }
 
 cell.ship.sunk::before {
-  color: var(--sunk-color)
+  color: var(--sunk-color);
+}
+
+player1 cell.ship.hit {
+  background-color: var(--player-hit-ship-bg-color);
+  color: var(--player-hit-ship-color);
+}
+
+player1 cell.ship.hit::before {
+  color: var(--player-hit-ship-color);
+}
+
+player1 cell.ship.hit.sunk {
+  background-color: var(--player-hit-ship-sunk-bg-color);
+}
+
+player1 cell.ship.hit.sunk::before {
+  color: var(--player-hit-ship-sunk-color);
+}
+
+player2 .disabled {
+  opacity: 60%;
+  transition: 200ms;
+}
+
+player2 cell:not(.disabled, .hit):hover {
+  cursor: pointer;
+  box-shadow: 0px 2px 6px rgb(84, 84, 84);
+  transition: 150ms;
 }
