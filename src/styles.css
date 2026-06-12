@@ -63,7 +63,11 @@ h6 {
   --main-text-color: rgb(214, 220, 225);
   --board-color: rgb(223, 223, 244);
   --ship-color: rgb(84, 84, 147);
-  --hit-color: red;
+  --hit-color: rgb(172, 50, 50);
+  --sunk-color: rgb(255, 229, 114);
+  --cell-border: 1px solid rgb(154, 147, 180);
+  --cell-radius: 2px;
+
 }
 
 header {
@@ -77,18 +81,78 @@ game-wrapper {
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
+  justify-content: center;
+  padding: 42px 0px;
+}
+
+ship-list {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+ship-list > div {
+  width: fit-content;
+  display:flex;
+  flex-direction: column;
+}
+
+ship-list p {
+  text-align: center;
+  letter-spacing: -1px;
+}
+
+ship {
+  width: fit-content;
+}
+
+ship > div {
+  border: var(--cell-border);
+  border-radius: var(--cell-radius);
+  background-color: var(--ship-color);
 }
 
 board {
-  /* background-color: var(--board-color); */
   gap: 2px;
 }
 
 cell {
-  border: 1px solid rgb(154, 147, 180);
-  border-radius: 2px;
+  border: var(--cell-border);
+  border-radius: var(--cell-radius);
+}
+
+cell.hit::before {
+  content: "X";
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+cell.hit:not(.ship)::before {
+  opacity: 35%;
+  font-weight: lighter;
 }
 
 .ship {
+  background-color: var(--ship-color); /* temporary for testing */
+}
+
+cell.ship.hit {
+  color: var(--hit-color);
+  font-weight: bold;
+}
+
+cell.ship.hit::before {
+  content: "X";
+  color: var(--hit-color)
+}
+
+cell.ship.sunk {
   background-color: var(--ship-color);
+  box-shadow: 1px 1px 2px rgb(149, 149, 149);
+}
+
+cell.ship.sunk::before {
+  color: var(--sunk-color)
 }

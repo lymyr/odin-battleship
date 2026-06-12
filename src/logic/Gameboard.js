@@ -1,4 +1,4 @@
-import Ship from "./ships.js";
+import Ship from "./Ships.js";
 
 class Gameboard {
   #size;
@@ -24,6 +24,7 @@ class Gameboard {
 
       for (let i = 0; i < ship.length; i++)
         this.#board[startIndex + n * i][2] = ship;
+      return true
     }
   }
 
