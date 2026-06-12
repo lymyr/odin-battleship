@@ -1,9 +1,10 @@
-import { p1,p2 } from "../logic/GameController.js";
-import Render from "../render.js";
 import Ship from "../logic/Ships.js";
+import Helper from "../helpers/Helper.js";
+import { p1, p2 } from "../index.js";
+import Prompt from "./Prompt.js";
 
 class Boards {
-    static render(size) {
+    static render(size=40) {
     const playerList = [p1, p2]
     for (let i = 0; i < playerList.length; i++) {
         const board = document.querySelector(`player${i+1} > board`)
@@ -40,7 +41,10 @@ class Boards {
                             p1.turn = false;
                             p2.turn = true;
                         }
-                        Render.render();
+                        
+                            
+                        this.render();
+                        this.isOngoing()
                     });
                 }
             })
@@ -49,16 +53,35 @@ class Boards {
         let compHit = Math.floor(Math.random() * 100)
         while (p1.board.board[compHit][3] != true)
             compHit = Math.floor(Math.random() * 100)
-     
-        p1.board.receiveAttack([Math.floor(compHit/10), compHit%10])
-        if (!(p1.board.board[compHit][2] instanceof Ship)) {
-            p1.turn = true
-            p2.turn = false
-        }
-        Render.render();
+        setTimeout(() => {
+            p1.board.receiveAttack([Math.floor(compHit/10), compHit%10])
+            if (!(p1.board.board[compHit][2] instanceof Ship)) {
+                p1.turn = true
+                p2.turn = false
+            }
+                
+            this.render();
+            this.isOngoing()
+        }, 750)
+        
     }
   }
 
+    static isOngoing() {
+        if (this.haveAllShipsSunk(p2) || this.haveAllShipsSunk(p1)) {
+            if (this.haveAllShipsSunk(p2))
+                Prompt.renderText("You won!")
+            else
+                Prompt.renderText("You lost :(")
+            p1.reset()
+            Helper.randomizeBoard(p1)
+            Prompt.renderButton("Play Again")
+            this.addRandomizeButton(p1)
+        }
+        else
+            this.addCellClicks(p1, p2)
+        
+    }
     static haveAllShipsSunk(player) {
         const board = player.board.board;
         for (let i = 0; i < board.length; i++) {
@@ -66,6 +89,23 @@ class Boards {
                 return false
         }
         return true
+    }
+
+    static addRandomizeButton(p1) {
+        const playerWrapper = document.querySelector("player1")
+        const randomizeBtn = document.createElement("button")
+        playerWrapper.appendChild(randomizeBtn)
+
+        randomizeBtn.textContent = "Randomize"
+        randomizeBtn.addEventListener("click", () => {
+            Helper.randomizeBoard(p1);
+            this.render()
+        });
+    }
+
+    static removeRandomizeButton() {
+        const playerWrapper = document.querySelector("player1")
+        playerWrapper.removeChild(document.querySelector("player1 button"))
     }
 }
 

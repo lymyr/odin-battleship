@@ -1,27 +1,28 @@
-import { p1 } from "../logic/GameController.js";
-import ShipList from "./ShipList.js";
+import Helper from "../helpers/Helper.js";
+import { p1, p2 } from "../index.js";
+import Boards from "./Boards.js";
 
 class Prompt {
-    static container = document.querySelector("winner-container")
-    static render(name="Player 1") {
-        const winnerText = document.createElement("h1");
-        winnerText.textContent = `${name} WON!`
-        this.container.appendChild(winnerText);
-        
-        this.renderButton("Play Again?")
+    static container = document.querySelector("header-container")
+    
+    static renderText(text="Welcome!") {
+        const h1 = document.createElement("h1");
+        h1.textContent = text
+        this.container.appendChild(h1);
     }
 
     static renderButton(text="Start Game") {
-        const playAgain = document.createElement("button")
-        playAgain.textContent = text
-        this.container.appendChild(playAgain)
+        const btn = document.createElement("button")
+        btn.textContent = text
+        this.container.appendChild(btn)
 
-        playAgain.addEventListener("click", () => {
-            // to do
-            // p1.reset()
-            // p2.reset()
-            // this.render()
-            ShipList.render(p1)
+        btn.addEventListener("click", () => {
+            p2.reset()
+            Helper.randomizeBoard(p2)
+            Boards.render()
+            Boards.addCellClicks(p1, p2)
+            this.container.innerHTML = ""
+            Boards.removeRandomizeButton()
         })
     }
 }

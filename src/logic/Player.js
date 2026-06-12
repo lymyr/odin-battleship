@@ -17,6 +17,7 @@ class Player {
 
   reset() {
     this.#board = new Gameboard()
+    this.refillShips()
   }
 
   refillShips() {
