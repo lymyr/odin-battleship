@@ -1,4 +1,4 @@
-import Ship from "./ships.js";
+import Ship from "./Ships.js";
 
 class Gameboard {
   #size;

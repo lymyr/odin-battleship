@@ -1,5 +1,5 @@
-import Gameboard from "../src/gameboard.js";
-import Ship from "../src/ships.js";
+import Gameboard from "../src/logic/gameboard.js";
+import Ship from "../src/logic/ships.js";
 
 test("place ships", () => {
   let gb = new Gameboard();

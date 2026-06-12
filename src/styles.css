@@ -65,6 +65,9 @@ h6 {
   --ship-color: rgb(84, 84, 147);
   --hit-color: rgb(172, 50, 50);
   --sunk-color: rgb(255, 229, 114);
+  --cell-border: 1px solid rgb(154, 147, 180);
+  --cell-radius: 2px;
+
 }
 
 header {
@@ -82,13 +85,40 @@ game-wrapper {
   padding: 42px 0px;
 }
 
+ship-list {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+ship-list > div {
+  width: fit-content;
+  display:flex;
+  flex-direction: column;
+}
+
+ship-list p {
+  text-align: center;
+  letter-spacing: -1px;
+}
+
+ship {
+  width: fit-content;
+}
+
+ship > div {
+  border: var(--cell-border);
+  border-radius: var(--cell-radius);
+  background-color: var(--ship-color);
+}
+
 board {
   gap: 2px;
 }
 
 cell {
-  border: 1px solid rgb(154, 147, 180);
-  border-radius: 2px;
+  border: var(--cell-border);
+  border-radius: var(--cell-radius);
 }
 
 cell.hit::before {

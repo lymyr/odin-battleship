@@ -1,6 +1,5 @@
-import Player from "./player.js";
-import Render from "./render.js";
-import Ship from "./ships.js";
+import Player from "./Player.js";
+import Ship from "./Ships.js";
 
 // preplaced for now
 const p1 = new Player(true);
