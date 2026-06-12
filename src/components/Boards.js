@@ -3,7 +3,7 @@ import Render from "../render.js";
 import Ship from "../logic/Ships.js";
 
 class Boards {
-    static render(size) {
+    static render(size=40) {
     const playerList = [p1, p2]
     for (let i = 0; i < playerList.length; i++) {
         const board = document.querySelector(`player${i+1} > board`)

@@ -1,7 +1,7 @@
 class ShipList {
     static render(player) {
         const shipListDOM = document.querySelector("ship-list")
-
+        shipListDOM.innerHTML = ""
         for (let i = 0; i < player.shipsList.length; i++) {
             const shipAmtWrapper = document.createElement("div")
             if (player.shipsList[i].length > 0) {
