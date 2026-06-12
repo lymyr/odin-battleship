@@ -89,12 +89,15 @@ ship-list {
   display: flex;
   gap: 8px;
   justify-content: center;
+  align-content: center;
+  min-height: 152px;
 }
 
 ship-list > div {
   width: fit-content;
   display:flex;
   flex-direction: column;
+  height: fit-content;
 }
 
 ship-list p {

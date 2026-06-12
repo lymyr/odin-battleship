@@ -25,7 +25,6 @@ class Prompt {
             p2.reset()
             Render.render()
             ShipList.render(p1)
-            DragShip.add(p1)
         })
     }
 }
