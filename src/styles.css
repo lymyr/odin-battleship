@@ -208,3 +208,31 @@ player2 cell:not(.disabled, .hit):hover {
   box-shadow: 0px 2px 6px rgb(84, 84, 84);
   transition: 150ms;
 }
+
+@media screen and (max-width: 480px) {
+  :root {
+    --cellSize: 36px;
+  }
+  board {
+    grid-template-columns: repeat(10, var(--cellSize)) !important;
+    grid-template-rows: repeat(10, var(--cellSize)) !important;
+  }
+
+  cell {
+    width: var(--cellSize) !important;
+    height: var(--cellSize) !important;
+  }
+}
+
+@media screen and (max-width: 412px) {
+  :root {
+    --cellSize: 32px;
+    --cell-radius: 8px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  :root {
+    --cellSize: 28px;
+  }
+}
